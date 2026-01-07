@@ -3,6 +3,7 @@ import pandas as pd
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
+import torch
 
 # Generate synthetic data
 X, y = make_classification(
@@ -63,3 +64,16 @@ plt.grid(True)
 
 plt.tight_layout()
 plt.show()
+
+
+# Convert train and test sets to PyTorch tensors
+X_train_tensor = torch.tensor(X_train, dtype=torch.float32)
+y_train_tensor = torch.tensor(y_train, dtype=torch.float32).view(-1, 1)  # reshape labels to (N,1)
+
+X_test_tensor = torch.tensor(X_test, dtype=torch.float32)
+y_test_tensor = torch.tensor(y_test, dtype=torch.float32).view(-1, 1)
+
+print("X_train_tensor shape:", X_train_tensor.shape, flush=True)
+print("y_train_tensor shape:", y_train_tensor.shape,flush=True)
+print("X_test_tensor shape:", X_test_tensor.shape,flush=True)
+print("y_test_tensor shape:", y_test_tensor.shape,flush=True)
