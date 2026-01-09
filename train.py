@@ -47,6 +47,9 @@ for epoch in range(num_epochs):
     if (epoch + 1) % 10 == 0:
         print(f"Epoch [{epoch+1}/{num_epochs}], Loss: {loss.item():.4f}")
 
+torch.save(model.state_dict(), "model.pth")
+print("Model saved as model.pth")
+
 
 #model.train() sets the model to training mode 
 #optimizer.zero_grad() clears gradients from the previous step to avoid accumulation.
